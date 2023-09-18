@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 
-struct AddFishingLogScreen: View {
+struct AddListView: View {
 
     @EnvironmentObject var navigationManager: NavigationManager
     @Environment(\.presentationMode) var presentationMode
@@ -166,21 +166,6 @@ struct AddFishingLogScreen: View {
         }
     }
 
-    //    @ViewBuilder
-    //    private func addFishButtonSection() -> some View {
-    //        Section {
-    //            HStack {
-    //                Spacer()
-    //                Button("魚を追加") {
-    //                    print("Current Log ID before adding fish: \(viewModel.currentLogID ?? "nil")")
-    //                    navigationManager.setCurrentViewModel(viewModel)
-    //                    navigationManager.path.append(.FishInputView)
-    //                }
-    //                Spacer()
-    //            }
-    //        }
-    //    }
-
     @ViewBuilder
     private func addFishButtonSection() -> some View {
         Section {
@@ -239,8 +224,8 @@ struct AddFishingLogScreen: View {
             HStack {
                 Spacer()
                 Button("仕掛けを追加") {
-                    navigationManager.setCurrentViewModel(viewModel)
-                    navigationManager.path.append(.TackleInputView)
+//                    navigationManager.setCurrentViewModel(viewModel)
+//                    navigationManager.path.append(.TackleInputView)
                 }
                 Spacer()
             }

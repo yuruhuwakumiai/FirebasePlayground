@@ -19,6 +19,13 @@
 		090F16EA2AB7352200E0C812 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F16E92AB7352200E0C812 /* ViewModel.swift */; };
 		090F16EC2AB735FC00E0C812 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F16EB2AB735FC00E0C812 /* NavigationManager.swift */; };
 		090F16EE2AB737AD00E0C812 /* KeyboardCloseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F16ED2AB737AD00E0C812 /* KeyboardCloseItem.swift */; };
+		090F16F02AB73B3500E0C812 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 090F16EF2AB73B3500E0C812 /* GoogleService-Info.plist */; };
+		093CE6472AB7AB0000967227 /* CustomMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6462AB7AB0000967227 /* CustomMonthYearPicker.swift */; };
+		093CE6492AB7ACA300967227 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6482AB7ACA300967227 /* TextView.swift */; };
+		093CE64B2AB7B5BE00967227 /* FishInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE64A2AB7B5BE00967227 /* FishInputView.swift */; };
+		093CE64D2AB7CAE600967227 /* MainTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE64C2AB7CAE600967227 /* MainTabScreen.swift */; };
+		093CE64F2AB7CB2800967227 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE64E2AB7CB2800967227 /* AboutAppView.swift */; };
+		095BE70A2AB7A6AF001855E3 /* CustomNavigationBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +40,13 @@
 		090F16E92AB7352200E0C812 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		090F16EB2AB735FC00E0C812 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		090F16ED2AB737AD00E0C812 /* KeyboardCloseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardCloseItem.swift; sourceTree = "<group>"; };
+		090F16EF2AB73B3500E0C812 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		093CE6462AB7AB0000967227 /* CustomMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMonthYearPicker.swift; sourceTree = "<group>"; };
+		093CE6482AB7ACA300967227 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		093CE64A2AB7B5BE00967227 /* FishInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishInputView.swift; sourceTree = "<group>"; };
+		093CE64C2AB7CAE600967227 /* MainTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabScreen.swift; sourceTree = "<group>"; };
+		093CE64E2AB7CB2800967227 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
+		095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,15 +82,13 @@
 		090F16CE2AB72F7500E0C812 /* FirebasePlayground */ = {
 			isa = PBXGroup;
 			children = (
+				093CE6452AB7A9BB00967227 /* Helper */,
+				093CE6442AB7A9A900967227 /* ViewModel */,
+				093CE6432AB7A9A400967227 /* Model */,
+				093CE6422AB7A99900967227 /* View */,
 				090F16CF2AB72F7500E0C812 /* FirebasePlaygroundApp.swift */,
-				090F16E52AB7321E00E0C812 /* Model.swift */,
-				090F16E02AB731DA00E0C812 /* FireStoreManager.swift */,
-				090F16D12AB72F7500E0C812 /* HomeListView.swift */,
-				090F16E92AB7352200E0C812 /* ViewModel.swift */,
-				090F16E72AB7341500E0C812 /* AddListView.swift */,
-				090F16EB2AB735FC00E0C812 /* NavigationManager.swift */,
-				090F16ED2AB737AD00E0C812 /* KeyboardCloseItem.swift */,
 				090F16D32AB72F7600E0C812 /* Assets.xcassets */,
+				090F16EF2AB73B3500E0C812 /* GoogleService-Info.plist */,
 				090F16D52AB72F7600E0C812 /* Preview Content */,
 			);
 			path = FirebasePlayground;
@@ -95,6 +107,47 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		093CE6422AB7A99900967227 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				090F16D12AB72F7500E0C812 /* HomeListView.swift */,
+				093CE64E2AB7CB2800967227 /* AboutAppView.swift */,
+				093CE64C2AB7CAE600967227 /* MainTabScreen.swift */,
+				090F16E72AB7341500E0C812 /* AddListView.swift */,
+				093CE64A2AB7B5BE00967227 /* FishInputView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		093CE6432AB7A9A400967227 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				090F16E52AB7321E00E0C812 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		093CE6442AB7A9A900967227 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				090F16E92AB7352200E0C812 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		093CE6452AB7A9BB00967227 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				090F16ED2AB737AD00E0C812 /* KeyboardCloseItem.swift */,
+				090F16EB2AB735FC00E0C812 /* NavigationManager.swift */,
+				090F16E02AB731DA00E0C812 /* FireStoreManager.swift */,
+				095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */,
+				093CE6462AB7AB0000967227 /* CustomMonthYearPicker.swift */,
+				093CE6482AB7ACA300967227 /* TextView.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				090F16D72AB72F7600E0C812 /* Preview Assets.xcassets in Resources */,
+				090F16F02AB73B3500E0C812 /* GoogleService-Info.plist in Resources */,
 				090F16D42AB72F7600E0C812 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,12 +230,18 @@
 			files = (
 				090F16EE2AB737AD00E0C812 /* KeyboardCloseItem.swift in Sources */,
 				090F16E12AB731DA00E0C812 /* FireStoreManager.swift in Sources */,
+				093CE64F2AB7CB2800967227 /* AboutAppView.swift in Sources */,
 				090F16D22AB72F7500E0C812 /* HomeListView.swift in Sources */,
+				093CE64D2AB7CAE600967227 /* MainTabScreen.swift in Sources */,
 				090F16EC2AB735FC00E0C812 /* NavigationManager.swift in Sources */,
+				095BE70A2AB7A6AF001855E3 /* CustomNavigationBarItems.swift in Sources */,
 				090F16D02AB72F7500E0C812 /* FirebasePlaygroundApp.swift in Sources */,
 				090F16E62AB7321E00E0C812 /* Model.swift in Sources */,
 				090F16EA2AB7352200E0C812 /* ViewModel.swift in Sources */,
+				093CE6472AB7AB0000967227 /* CustomMonthYearPicker.swift in Sources */,
+				093CE6492AB7ACA300967227 /* TextView.swift in Sources */,
 				090F16E82AB7341500E0C812 /* AddListView.swift in Sources */,
+				093CE64B2AB7B5BE00967227 /* FishInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

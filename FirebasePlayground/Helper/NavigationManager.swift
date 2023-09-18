@@ -26,15 +26,11 @@ struct NavigationDestinationModifier: ViewModifier {
                 let viewModel = navigationManager.currentViewModel
 
                 switch showView {
-                case .FishingLogListScreen:
+                case .HomeListView:
                     HomeListView(viewModel: viewModel as! FishingLogViewModel)
-                case .AddFishingLogScreen:
-                    HomeListView(viewModel: viewModel as! FishingLogViewModel)
-                case .StatisticsView:
+                case .AddListView:
                     HomeListView(viewModel: viewModel as! FishingLogViewModel)
                 case .FishInputView:
-                    HomeListView(viewModel: viewModel as! FishingLogViewModel)
-                case .TackleInputView:
                     HomeListView(viewModel: viewModel as! FishingLogViewModel)
                 }
             }
@@ -43,9 +39,7 @@ struct NavigationDestinationModifier: ViewModifier {
 
 // ①
 enum ShowView: Hashable {
-    case FishingLogListScreen
-    case AddFishingLogScreen
-    case StatisticsView
+    case HomeListView
+    case AddListView
     case FishInputView
-    case TackleInputView
 }

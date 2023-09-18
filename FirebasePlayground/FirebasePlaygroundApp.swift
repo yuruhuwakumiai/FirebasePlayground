@@ -25,7 +25,7 @@ struct FirebasePlaygroundApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeListView(viewModel: FishingLogViewModel())
+            MainTabScreen()
                 .environmentObject(navigationManager) // 一番最初の画面にenviromentObjectを認識させる
         }
     }
