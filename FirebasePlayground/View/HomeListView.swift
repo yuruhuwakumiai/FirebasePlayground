@@ -24,7 +24,7 @@ struct HomeListView: View {
     var body: some View {
         NavigationStack(path: $navigationManager.path) {
             ZStack {
-                Color.gray
+                Color.background_color
                     .ignoresSafeArea()
                 VStack(spacing: 20) {
                     homeSearchView()
@@ -38,7 +38,8 @@ struct HomeListView: View {
                             .imageScale(.large) // アイコンのサイズを調整
                     }
                 }
-
+                
+                .customNavigationBarItems(viewModel: viewModel)
                 .navigationBarTitle("記録", displayMode: .inline)
 
             }
@@ -88,7 +89,7 @@ struct HomeListView: View {
                                 logText(for: log)
                             }
                         }
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.white)
                         .padding(5)
                         .onAppear {
 //                            viewModel.fetchImage(for: log)
@@ -105,7 +106,7 @@ struct HomeListView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text(viewModel.dateString(from: log.date))
-//                    .foregroundColor(Color.sub_color)
+                    .foregroundColor(Color.sub_color)
                     .bold()
                 Text(log.title)
             }

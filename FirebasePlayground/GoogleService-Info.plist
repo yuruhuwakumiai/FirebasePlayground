@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDd_MM8xgV9yAX00ZFPAEd9z2GVNPfhUwU</string>
+	<string>AIzaSyAgeBaTXCglb4E-O6vJM-MA2xQb0tKik_0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>730730189528</string>
+	<string>958017983519</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.yuutarou.FirebasePlayground</string>
 	<key>PROJECT_ID</key>
-	<string>fir-playground-268f6</string>
+	<string>fir-playground-61578</string>
 	<key>STORAGE_BUCKET</key>
-	<string>fir-playground-268f6.appspot.com</string>
+	<string>fir-playground-61578.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:730730189528:ios:4f0337b821c236e6f77dad</string>
+	<string>1:958017983519:ios:8a3c2c264b76d33656712a</string>
 </dict>
 </plist>

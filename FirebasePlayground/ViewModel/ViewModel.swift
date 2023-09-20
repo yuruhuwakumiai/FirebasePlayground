@@ -63,8 +63,17 @@ class FishingLogViewModel: ObservableObject {
         editingLog = log
     }
 
+    enum AlertType {
+        case deleteConfirmation
+        case unsavedChanges
+        case saveFirst
+        // 他のアラートタイプも追加可能です
+    }
 
     // AddFishingLogScreen
+    @Published var currentAlertType: AlertType?
+    @Published var isShowingAlert: Bool = false
+
     @Published var isShowingInputView = false
     @Published var selectedFishType = FishType.salmon.rawValue
     @Published var selectedFishLength = 0.0

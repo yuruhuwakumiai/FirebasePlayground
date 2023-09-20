@@ -27,14 +27,14 @@ struct CustomMonthYearPicker: View {
                     Button("\(formatNumber(year))年") {
                         selectedYear = year
                     }
-                    .foregroundColor(Color.clear)
+                    .foregroundColor(Color.main_color)
                 }
             } label: {
                 HStack {
                     Text("\(formatNumber(selectedYear))年")
                     Image(systemName: "chevron.down") // アイコンを追加
                 }
-                .foregroundColor(Color.clear)
+                .foregroundColor(Color.main_color)
                 .padding(10) // パディングを追加
                 .background(Color(.systemGray5)) // 背景色を変更
                 .cornerRadius(8) // 角を丸くする
@@ -48,14 +48,14 @@ struct CustomMonthYearPicker: View {
                     Button("\(month)月") {
                         selectedMonth = month
                     }
-                    .foregroundColor(Color.clear)
+                    .foregroundColor(Color.main_color)
                 }
             } label: {
                 HStack {
                     Text("\(selectedMonth)月")
                     Image(systemName: "chevron.down") // アイコンを追加
                 }
-                .foregroundColor(Color.clear)
+                .foregroundColor(Color.main_color)
                 .padding(10) // パディングを追加
                 .background(Color(.systemGray5)) // 背景色を変更
                 .cornerRadius(8) // 角を丸くする

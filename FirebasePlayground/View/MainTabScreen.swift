@@ -24,7 +24,7 @@ struct MainTabScreen: View {
                     Text("その他")
                 }
         }
-//        .accentColor(Color.main_color)  // ここでアクセント色を設定
+        .accentColor(Color.main_color)  // ここでアクセント色を設定
 
     }
 }

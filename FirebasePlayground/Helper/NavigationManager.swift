@@ -29,9 +29,9 @@ struct NavigationDestinationModifier: ViewModifier {
                 case .HomeListView:
                     HomeListView(viewModel: viewModel as! FishingLogViewModel)
                 case .AddListView:
-                    HomeListView(viewModel: viewModel as! FishingLogViewModel)
-                case .FishInputView:
-                    HomeListView(viewModel: viewModel as! FishingLogViewModel)
+                    AddListView(viewModel: viewModel as! FishingLogViewModel)
+//                case .FishInputView:
+//                    FishInputView(viewModel: viewModel as! FishingLogViewModel)
                 }
             }
     }
@@ -41,5 +41,5 @@ struct NavigationDestinationModifier: ViewModifier {
 enum ShowView: Hashable {
     case HomeListView
     case AddListView
-    case FishInputView
+//    case FishInputView
 }

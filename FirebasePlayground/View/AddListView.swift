@@ -30,18 +30,37 @@ struct AddListView: View {
                 addTackleButtonSection()
                 tackleNoteSection()
                 saveButtonOrDeleteButtonView()
-                    .alert("警告", isPresented: $viewModel.showingDeleteAlert){
-                        Button("削除", role: .destructive){
-                            if let logID = viewModel.editingLog?.id {
-                                DispatchQueue.main.async {
-                                    navigationManager.path.removeAll()
-                                    //                                    viewModel.deleteLog(withID: logID)
-                                    viewModel.editingLog = nil
-                                }
-                            }
+
+                    .alert(isPresented: $viewModel.isShowingAlert) {
+                        switch viewModel.currentAlertType {
+                        case .deleteConfirmation:
+                            return Alert(
+                                title: Text("警告"),
+                                message: Text("データが削除されますが、よろしいですか？"),
+                                primaryButton: .destructive(Text("削除"), action: {
+                                    if let logID = viewModel.editingLog?.id {
+                                        DispatchQueue.main.async {
+                                            navigationManager.path.removeAll()
+                                            viewModel.editingLog = nil
+                                        }
+                                    }
+                                }),
+                                secondaryButton: .cancel(Text("キャンセル"))
+                            )
+                        case .unsavedChanges:
+                            return Alert(
+                                title: Text("警告"),
+                                message: Text("内容は保存されませんがよろしいでしょうか？"),
+                                primaryButton: .destructive(Text("はい")) {
+                                    presentationMode.wrappedValue.dismiss()
+                                },
+                                secondaryButton: .cancel(Text("キャンセル"))
+                            )
+                        case .saveFirst:
+                            return Alert(title: Text("警告"), message: Text("先に釣行記録を保存してください。"), dismissButton: .default(Text("了解")))
+                        default:
+                            return Alert(title: Text("エラー"), message: Text("不明なエラーが発生しました。"), dismissButton: .default(Text("了解")))
                         }
-                    } message: {
-                        Text("データが削除されますが、よろしいですか？")
                     }
             }
             .closeKeyboardOnTap()
@@ -59,27 +78,14 @@ struct AddListView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
-                    viewModel.showingUnsavedChangesAlert = true
+                    viewModel.currentAlertType = .unsavedChanges
+                    viewModel.isShowingAlert = true
                 }) {
                     Image(systemName: "arrow.left")
                 }
             }
         }
         .navigationBarTitle(viewModel.editingLog != nil ? "記録を確認" : "記録をつける" , displayMode: .inline)
-
-        .alert(isPresented: $viewModel.showingUnsavedChangesAlert) {
-            Alert(
-                title: Text("警告"),
-                message: Text("内容は保存されませんがよろしいでしょうか？"),
-                primaryButton: .destructive(Text("はい")) {
-                    presentationMode.wrappedValue.dismiss()
-                },
-                secondaryButton: .cancel(Text("キャンセル"))
-            )
-        }
-        .alert(isPresented: $viewModel.showingSaveFirstAlert) {
-            Alert(title: Text("警告"), message: Text("先に釣行記録を保存してください。"), dismissButton: .default(Text("了解")))
-        }
 
         .actionSheet(isPresented: $viewModel.showingActionSheet) {
             ActionSheet(title: Text("写真の選択"), buttons: [
@@ -174,8 +180,8 @@ struct AddListView: View {
                 Button("魚を追加") {
                     if viewModel.currentLogID != nil {
                         print("Current Log ID before adding fish: \(viewModel.currentLogID ?? "nil")")
-                        navigationManager.setCurrentViewModel(viewModel)
-                        navigationManager.path.append(.FishInputView)
+//                        navigationManager.setCurrentViewModel(viewModel)
+//                        navigationManager.path.append(.FishInputView)
                     } else {
                         // ここでアラートを表示して、先に釣行記録を保存するように促す
                         viewModel.showingSaveFirstAlert = true
@@ -318,7 +324,8 @@ struct AddListView: View {
                 if viewModel.editingLog != nil {
                     Spacer()
                     Button("削除する") {
-                        viewModel.showingDeleteAlert = true  // 削除確認アラートを表示
+                        viewModel.currentAlertType = .deleteConfirmation
+                        viewModel.isShowingAlert = true
                     }
                     .buttonStyle(CustomDeleteButtonStyle())
                 }
