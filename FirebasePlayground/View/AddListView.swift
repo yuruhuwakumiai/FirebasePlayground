@@ -14,6 +14,8 @@ struct AddListView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: FishingLogViewModel
 
+    @State private var isShowingAlert = false
+
     let fishLengths = Array(0...200)
     let fishWeights = Array(0...100)
 
@@ -31,39 +33,39 @@ struct AddListView: View {
                 tackleNoteSection()
                 saveButtonOrDeleteButtonView()
 
-                    .alert(isPresented: $viewModel.isShowingAlert) {
-                        switch viewModel.currentAlertType {
-                        case .deleteConfirmation:
-                            return Alert(
-                                title: Text("警告"),
-                                message: Text("データが削除されますが、よろしいですか？"),
-                                primaryButton: .destructive(Text("削除"), action: {
-                                    if let logID = viewModel.editingLog?.id {
-                                        DispatchQueue.main.async {
-                                            navigationManager.path.removeAll()
-                                            viewModel.editingLog = nil
-                                        }
-                                    }
-                                }),
-                                secondaryButton: .cancel(Text("キャンセル"))
-                            )
-                        case .unsavedChanges:
-                            return Alert(
-                                title: Text("警告"),
-                                message: Text("内容は保存されませんがよろしいでしょうか？"),
-                                primaryButton: .destructive(Text("はい")) {
-                                    presentationMode.wrappedValue.dismiss()
-                                },
-                                secondaryButton: .cancel(Text("キャンセル"))
-                            )
-                        case .saveFirst:
-                            return Alert(title: Text("警告"), message: Text("先に釣行記録を保存してください。"), dismissButton: .default(Text("了解")))
-                        default:
-                            return Alert(title: Text("エラー"), message: Text("不明なエラーが発生しました。"), dismissButton: .default(Text("了解")))
-                        }
-                    }
             }
             .closeKeyboardOnTap()
+        }
+        .alert(isPresented: $isShowingAlert) {
+            switch viewModel.currentAlertType {
+            case .deleteConfirmation:
+                return Alert(
+                    title: Text("警告"),
+                    message: Text("データが削除されますが、よろしいですか？"),
+                    primaryButton: .destructive(Text("削除"), action: {
+                        if let logID = viewModel.editingLog?.id {
+                            DispatchQueue.main.async {
+                                navigationManager.path.removeAll()
+                                viewModel.editingLog = nil
+                            }
+                        }
+                    }),
+                    secondaryButton: .cancel(Text("キャンセル"))
+                )
+            case .unsavedChanges:
+                return Alert(
+                    title: Text("警告"),
+                    message: Text("内容は保存されませんがよろしいでしょうか？"),
+                    primaryButton: .destructive(Text("はい")) {
+                        presentationMode.wrappedValue.dismiss()
+                    },
+                    secondaryButton: .cancel(Text("キャンセル"))
+                )
+            case .saveFirst:
+                return Alert(title: Text("警告"), message: Text("先に釣行記録を保存してください。"), dismissButton: .default(Text("了解")))
+            default:
+                return Alert(title: Text("エラー"), message: Text("不明なエラーが発生しました。"), dismissButton: .default(Text("了解")))
+            }
         }
         .onAppear {
             print("Current Log ID before navigating to FishInputView: \(viewModel.currentLogID ?? "nil")")
@@ -79,7 +81,7 @@ struct AddListView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
                     viewModel.currentAlertType = .unsavedChanges
-                    viewModel.isShowingAlert = true
+                    isShowingAlert = true
                 }) {
                     Image(systemName: "arrow.left")
                 }
