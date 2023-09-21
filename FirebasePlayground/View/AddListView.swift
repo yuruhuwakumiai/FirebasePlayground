@@ -12,7 +12,9 @@ struct AddListView: View {
 
     @EnvironmentObject var navigationManager: NavigationManager
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var viewModel: FishingLogViewModel
+    @ObservedObject var uiViewModel: FishingLogUIViewModel
+    @ObservedObject var fishingLogDataViewModel: FishingLogDataViewModel
+
 
     @State private var isShowingAlert = false
 
@@ -37,16 +39,16 @@ struct AddListView: View {
             .closeKeyboardOnTap()
         }
         .alert(isPresented: $isShowingAlert) {
-            switch viewModel.currentAlertType {
+            switch uiViewModel.currentAlertType {
             case .deleteConfirmation:
                 return Alert(
                     title: Text("警告"),
                     message: Text("データが削除されますが、よろしいですか？"),
                     primaryButton: .destructive(Text("削除"), action: {
-                        if let logID = viewModel.editingLog?.id {
+                        if let logID = uiViewModel.editingLog?.id {
                             DispatchQueue.main.async {
                                 navigationManager.path.removeAll()
-                                viewModel.editingLog = nil
+                                uiViewModel.editingLog = nil
                             }
                         }
                     }),
@@ -68,10 +70,10 @@ struct AddListView: View {
             }
         }
         .onAppear {
-            print("Current Log ID before navigating to FishInputView: \(viewModel.currentLogID ?? "nil")")
-            viewModel.loadLogs()
-            if let currentLogID = viewModel.currentLogID {
-                viewModel.loadFishes(for: currentLogID)
+            print("Current Log ID before navigating to FishInputView: \(uiViewModel.currentLogID ?? "nil")")
+            fishingLogDataViewModel.loadLogs()
+            if let currentLogID = uiViewModel.currentLogID {
+                fishingLogDataViewModel.loadFishes(for: currentLogID)
             }
         }
 
@@ -80,75 +82,75 @@ struct AddListView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
-                    viewModel.currentAlertType = .unsavedChanges
+                    uiViewModel.currentAlertType = .unsavedChanges
                     isShowingAlert = true
                 }) {
                     Image(systemName: "arrow.left")
                 }
             }
         }
-        .navigationBarTitle(viewModel.editingLog != nil ? "記録を確認" : "記録をつける" , displayMode: .inline)
+        .navigationBarTitle(uiViewModel.editingLog != nil ? "記録を確認" : "記録をつける" , displayMode: .inline)
 
-        .actionSheet(isPresented: $viewModel.showingActionSheet) {
+        .actionSheet(isPresented: $uiViewModel.showingActionSheet) {
             ActionSheet(title: Text("写真の選択"), buttons: [
-                .default(Text("ライブラリから選択")) { viewModel.selectedAction = .library },
-                .default(Text("写真を撮影する")) { viewModel.selectedAction = .camera },
-                .destructive(Text("削除する")) { viewModel.selectedAction = .delete },
+                .default(Text("ライブラリから選択")) { uiViewModel.selectedAction = .library },
+                .default(Text("写真を撮影する")) { uiViewModel.selectedAction = .camera },
+                .destructive(Text("削除する")) { uiViewModel.selectedAction = .delete },
                 .cancel()
             ])
         }
 
-        .onChange(of: viewModel.selectedAction) { action in
+        .onChange(of: uiViewModel.selectedAction) { action in
 
             switch action {
             case .library:
-                viewModel.isUsingCamera = false
-                viewModel.showingImagePicker = true
+                uiViewModel.isUsingCamera = false
+                uiViewModel.showingImagePicker = true
             case .camera:
-                viewModel.isUsingCamera = true
-                viewModel.showingImagePicker = true
+                uiViewModel.isUsingCamera = true
+                uiViewModel.showingImagePicker = true
             case .delete:
-                viewModel.image = nil
+                uiViewModel.image = nil
             default:
                 break
             }
         }
-        .sheet(isPresented: $viewModel.showingImagePicker) {
+        .sheet(isPresented: $uiViewModel.showingImagePicker) {
         }
     }
 
     // スワイプして消す時使う
     func deleteFish(at offsets: IndexSet) {
-        viewModel.fishes.remove(atOffsets: offsets)
+        uiViewModel.fishes.remove(atOffsets: offsets)
     }
 
     @ViewBuilder
     private func titleDateSection() -> some View {
         Section(header: Text("タイトル・日付")) {
-            TextField("タイトルを入力", text: $viewModel.title)
-            DatePicker("日付", selection: $viewModel.date, displayedComponents: [.date])
+            TextField("タイトルを入力", text: $uiViewModel.title)
+            DatePicker("日付", selection: $uiViewModel.date, displayedComponents: [.date])
         }
     }
 
     @ViewBuilder
     private func placeSection() -> some View {
         Section(header: Text("場所")) {
-            TextField("釣り場所を入力", text: $viewModel.location)
-            DatePicker("開始時間", selection: $viewModel.startDate, displayedComponents: [.hourAndMinute])
-            DatePicker("終了時間", selection: $viewModel.endDate, displayedComponents: [.hourAndMinute])
+            TextField("釣り場所を入力", text: $uiViewModel.location)
+            DatePicker("開始時間", selection: $uiViewModel.startDate, displayedComponents: [.hourAndMinute])
+            DatePicker("終了時間", selection: $uiViewModel.endDate, displayedComponents: [.hourAndMinute])
         }
     }
 
     @ViewBuilder
     private func whetherSection() -> some View {
         Section(header: Text("天候")) {
-            Picker("天候", selection: $viewModel.selectedWeather) {
+            Picker("天候", selection: $uiViewModel.selectedWeather) {
                 ForEach(WeatherTypes.allCases, id: \.self) { weather in
                     Text(weather.rawValue).tag(weather)
                 }
             }.pickerStyle(SegmentedPickerStyle())
 
-            Picker("潮回り", selection: $viewModel.selectedTide) {
+            Picker("潮回り", selection: $uiViewModel.selectedTide) {
                 ForEach(TideTypes.allCases, id: \.self) { tide in
                     Text(tide.rawValue).tag(tide)
                 }
@@ -159,7 +161,7 @@ struct AddListView: View {
     @ViewBuilder
     private func homeCellView() -> some View {
 
-        List(viewModel.fishes) { fish in
+        List(uiViewModel.fishes) { fish in
             VStack(alignment: .leading) {
                 Text(fish.type)
                 Text("\(fish.length) cm")
@@ -180,13 +182,13 @@ struct AddListView: View {
             HStack {
                 Spacer()
                 Button("魚を追加") {
-                    if viewModel.currentLogID != nil {
-                        print("Current Log ID before adding fish: \(viewModel.currentLogID ?? "nil")")
+                    if uiViewModel.currentLogID != nil {
+                        print("Current Log ID before adding fish: \(uiViewModel.currentLogID ?? "nil")")
 //                        navigationManager.setCurrentViewModel(viewModel)
 //                        navigationManager.path.append(.FishInputView)
                     } else {
                         // ここでアラートを表示して、先に釣行記録を保存するように促す
-                        viewModel.showingSaveFirstAlert = true
+                        uiViewModel.showingSaveFirstAlert = true
                     }
                 }
                 Spacer()
@@ -197,7 +199,7 @@ struct AddListView: View {
     @ViewBuilder
     private func fishNoteSection() -> some View {
         Section(header: Text("魚のメモ")) {
-            TextEditor(text: $viewModel.fishNote)
+            TextEditor(text: $uiViewModel.fishNote)
                 .frame(height: 100)
         }
     }
@@ -205,8 +207,8 @@ struct AddListView: View {
     @ViewBuilder
     private func addedFishListSection() -> some View {
         Section(header: Text("追加された魚")) {
-            ForEach(viewModel.fishes.indices, id: \.self) { index in
-                let fish = viewModel.fishes[index]
+            ForEach(uiViewModel.fishes.indices, id: \.self) { index in
+                let fish = uiViewModel.fishes[index]
                 HStack {
                     if let image = fish.image {
                         Image(uiImage: image)
@@ -243,7 +245,7 @@ struct AddListView: View {
     @ViewBuilder
     private func tackleNoteSection() -> some View {
         Section(header: Text("仕掛け・釣れ方")) {
-            TextEditor(text: $viewModel.tackleNote)
+            TextEditor(text: $uiViewModel.tackleNote)
                 .frame(height: 100)
         }
     }
@@ -252,7 +254,7 @@ struct AddListView: View {
     private func moneySection() -> some View {
         Section(header: Text("費用")) {
             HStack {
-                TextField("合計費用（¥）", text: $viewModel.cost)
+                TextField("合計費用（¥）", text: $uiViewModel.cost)
                     .keyboardType(.numberPad)
                 Text("円")
             }
@@ -262,7 +264,7 @@ struct AddListView: View {
     @ViewBuilder
     private func addPictureSection() -> some View {
         Section(header: Text("釣り場の写真")) {
-            if let img = viewModel.image {
+            if let img = uiViewModel.image {
                 Image(uiImage: img)
                     .resizable()
                     .scaledToFit()
@@ -271,7 +273,7 @@ struct AddListView: View {
             HStack {
                 Spacer()
                 Button("写真を選択") {
-                    viewModel.showingActionSheet = true
+                    uiViewModel.showingActionSheet = true
                 }
                 Spacer()
             }
@@ -284,37 +286,37 @@ struct AddListView: View {
             HStack {
                 Spacer()
                 // MARK: ※更新ボタン
-                Button(viewModel.editingLog != nil ? "更新する" : "追加する") {
-                    let costDouble = Double(viewModel.cost) ?? 0.0
+                Button(uiViewModel.editingLog != nil ? "更新する" : "追加する") {
+                    let costDouble = Double(uiViewModel.cost) ?? 0.0
                     var newLog = FishingLog()
-                    if let editingLog = viewModel.editingLog {
+                    if let editingLog = uiViewModel.editingLog {
                         newLog.id = editingLog.id
                     }
-                    newLog.title = viewModel.title
-                    newLog.date = viewModel.date
-                    newLog.startDate = viewModel.startDate
-                    newLog.endDate = viewModel.endDate
-                    newLog.fishType = viewModel.selectedFishType
-                    newLog.length = Double(viewModel.selectedFishLength)
-                    newLog.location = viewModel.location
-                    newLog.fishNote = viewModel.fishNote
-                    newLog.weather = viewModel.selectedWeather
-                    newLog.tide = viewModel.selectedTide
-                    newLog.tackleNote = viewModel.tackleNote
+                    newLog.title = uiViewModel.title
+                    newLog.date = uiViewModel.date
+                    newLog.startDate = uiViewModel.startDate
+                    newLog.endDate = uiViewModel.endDate
+                    newLog.fishType = uiViewModel.selectedFishType
+                    newLog.length = Double(uiViewModel.selectedFishLength)
+                    newLog.location = uiViewModel.location
+                    newLog.fishNote = uiViewModel.fishNote
+                    newLog.weather = uiViewModel.selectedWeather
+                    newLog.tide = uiViewModel.selectedTide
+                    newLog.tackleNote = uiViewModel.tackleNote
                     newLog.cost = costDouble
 
                     // FireStorageに保存する
-                        viewModel.addLog(newLog) { logID in
+                    fishingLogDataViewModel.addLog(newLog) { logID in
                     }
                     // FireStoreに保存する
-                    if let editingLog = viewModel.editingLog {
+                    if let editingLog = uiViewModel.editingLog {
                         print("Editing log ID: \(editingLog.id)")
                         // Update existing log in Firebase
-                        viewModel.updateLog(editingLog, with: newLog)
+                        fishingLogDataViewModel.updateLog(editingLog, with: newLog)
                     } else {
-                        viewModel.addLog(newLog) { logID in
+                        fishingLogDataViewModel.addLog(newLog) { logID in
                             if let id = logID {
-                                self.viewModel.currentLogID = id
+                                self.uiViewModel.currentLogID = id
                             }
                         }
                     }
@@ -323,11 +325,11 @@ struct AddListView: View {
                 .buttonStyle(CustomButtonStyle())
 
                 // 編集中の場合のみ、削除ボタンを表示
-                if viewModel.editingLog != nil {
+                if uiViewModel.editingLog != nil {
                     Spacer()
                     Button("削除する") {
-                        viewModel.currentAlertType = .deleteConfirmation
-                        viewModel.isShowingAlert = true
+                        uiViewModel.currentAlertType = .deleteConfirmation
+                        uiViewModel.isShowingAlert = true
                     }
                     .buttonStyle(CustomDeleteButtonStyle())
                 }

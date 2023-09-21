@@ -10,7 +10,12 @@ import UIKit
 
 struct HomeListView: View {
 
-    @ObservedObject var viewModel: FishingLogViewModel
+    @ObservedObject var uiViewModel: FishingLogUIViewModel
+    @ObservedObject var fishingLogDataViewModel: FishingLogDataViewModel
+    @ObservedObject var logStateViewModel: FishingLogStateViewModel
+    @ObservedObject var logFilterViewModel: FishingLogFilterViewModel
+    @ObservedObject var logUtilityViewModel: FishingLogUtilityViewModel
+
     @State private var selectedDate: Date = Date()
     @EnvironmentObject var navigationManager: NavigationManager
 
@@ -30,21 +35,21 @@ struct HomeListView: View {
                     homeSearchView()
                     diaryListView()
                     Button {
-                        viewModel.prepareForNewLog()
-                        navigationManager.setCurrentViewModel(viewModel)
+                        logStateViewModel.prepareForNewLog()
+                        navigationManager.setViewModels(newViewModels)
                         navigationManager.path.append(.AddListView)
                     } label: {
                         Image(systemName: "plus.circle.fill") // 「追加」のアイコン
                             .imageScale(.large) // アイコンのサイズを調整
                     }
                 }
-                
-                .customNavigationBarItems(viewModel: viewModel)
+
+//                .customNavigationBarItems(viewModel: viewModel)
                 .navigationBarTitle("記録", displayMode: .inline)
 
             }
             .onAppear {
-                viewModel.loadLogs()
+                fishingLogDataViewModel.loadLogs()
             }
             .modifier(NavigationDestinationModifier())
         }
@@ -52,7 +57,7 @@ struct HomeListView: View {
 
     @ViewBuilder
     private func homeSearchView() -> some View {
-        Picker("検索項目", selection: $viewModel.selectedSearchCriteria) {
+        Picker("検索項目", selection: $uiViewModel.selectedSearchCriteria) {
             ForEach(SearchCriteria.allCases, id: \.self) { criteria in
                 Text(criteria.rawValue).tag(criteria)
             }
@@ -61,10 +66,10 @@ struct HomeListView: View {
         .padding(.horizontal)
         .padding(.top, 30)
 
-        if viewModel.selectedSearchCriteria == .date {
-            CustomMonthYearPicker(selectedYear: $viewModel.selectedYear, selectedMonth: $viewModel.selectedMonth)
+        if uiViewModel.selectedSearchCriteria == .date {
+            CustomMonthYearPicker(selectedYear: $uiViewModel.selectedYear, selectedMonth: $uiViewModel.selectedMonth)
         } else {
-            TextField("検索...", text: $viewModel.searchText)
+            TextField("検索...", text: $uiViewModel.searchText)
                 .padding(10)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
@@ -76,11 +81,11 @@ struct HomeListView: View {
     @ViewBuilder
     private func diaryListView() -> some View {
         List {
-            ForEach(Array(viewModel.filteredLogs.keys), id: \.self) { key in
+            ForEach(Array(logFilterViewModel.filteredLogs.keys), id: \.self) { key in
                 Section(header: Text(readableYearAndMonth(from: key))) {
-                    ForEach(viewModel.filteredLogs[key]!, id: \.id) { log in
+                    ForEach(logFilterViewModel.filteredLogs[key]!, id: \.id) { log in
                         Button {
-                            viewModel.prepareForEditing(log: log)
+                            logStateViewModel.prepareForEditing(log: log)
                             navigationManager.setCurrentViewModel(viewModel)
                             navigationManager.path.append(.AddListView)
                         } label: {
@@ -102,15 +107,15 @@ struct HomeListView: View {
     }
 
     @ViewBuilder
-    private func logText(for log: FishingLog) -> some View { // LogTypeは適切な型に置き換えてください。
+    private func logText(for log: FishingLog) -> some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(viewModel.dateString(from: log.date))
+                Text(logUtilityViewModel.dateString(from: log.date))
                     .foregroundColor(Color.sub_color)
                     .bold()
                 Text(log.title)
             }
-            Text("\(viewModel.timeRangeString(from: log.startDate, to: log.endDate))")  // 開始時間と終了時間
+            Text("\(logUtilityViewModel.timeRangeString(from: log.startDate, to: log.endDate))")  // 開始時間と終了時間
             if let location = log.location, !location.isEmpty {
                 Text(location)  // 場所
             }
@@ -120,7 +125,7 @@ struct HomeListView: View {
 
     @ViewBuilder
     private func logImage(for log: FishingLog) -> some View { // LogTypeは適切な型に置き換えてください。
-        if let img = viewModel.images[log.id] {
+        if let img = uiViewModel.images[log.id] {
             Image(uiImage: img)
                 .resizable()
                 .scaledToFit()

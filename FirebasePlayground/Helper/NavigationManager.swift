@@ -10,10 +10,35 @@ import SwiftUI
 class NavigationManager: ObservableObject {
     @Published var path: [ShowView] = []
     var currentViewModel: Any?
+    var uiViewModel: Any?
+    var logDataViewModel: Any?
+    var logStateViewModel: Any?
+    var logFilterViewModel: Any?
+    var logUtilityViewModel: Any?
 
     // ここでViewModelをセットする。
     func setCurrentViewModel(_ viewModel: Any) {
         currentViewModel = viewModel
+    }
+
+    func setUiViewModel(_ viewModel: Any) {
+        uiViewModel = viewModel
+    }
+
+    func setLogViewModel(_ viewModel: Any) {
+        logDataViewModel = viewModel
+    }
+
+    func setLogStateViewModel(_ viewModel: Any) {
+        logStateViewModel = viewModel
+    }
+
+    func setLogFilterViewModel(_ viewModel: Any) {
+        logFilterViewModel = viewModel
+    }
+
+    func setlogUtilityViewModel(_ viewModel: Any) {
+        logUtilityViewModel = viewModel
     }
 }
 
@@ -24,12 +49,17 @@ struct NavigationDestinationModifier: ViewModifier {
         content
             .navigationDestination(for: ShowView.self) { showView in // ②
                 let viewModel = navigationManager.currentViewModel
+                let uiViewModel = navigationManager.uiViewModel
+                let logDataViewModel = navigationManager.logDataViewModel
+                let logStateViewModel = navigationManager.logStateViewModel
+                let logFilterViewModel = navigationManager.logFilterViewModel
+                let logUtilityViewModel = navigationManager.logUtilityViewModel
 
                 switch showView {
                 case .HomeListView:
-                    HomeListView(viewModel: viewModel as! FishingLogViewModel)
+                    HomeListView(uiViewModel: uiViewModel as! FishingLogUIViewModel, fishingLogDataViewModel: logDataViewModel as! FishingLogDataViewModel, logStateViewModel: logStateViewModel as! FishingLogStateViewModel, logFilterViewModel: logFilterViewModel as! FishingLogFilterViewModel, logUtilityViewModel: logUtilityViewModel as! FishingLogUtilityViewModel)
                 case .AddListView:
-                    AddListView(viewModel: viewModel as! FishingLogViewModel)
+                    AddListView(uiViewModel: uiViewModel as! FishingLogUIViewModel, fishingLogDataViewModel: logDataViewModel as! FishingLogDataViewModel)
 //                case .FishInputView:
 //                    FishInputView(viewModel: viewModel as! FishingLogViewModel)
                 }

@@ -26,7 +26,7 @@
 		093CE64F2AB7CB2800967227 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE64E2AB7CB2800967227 /* AboutAppView.swift */; };
 		093CE6512AB89C1800967227 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6502AB89C1800967227 /* CustomColor.swift */; };
 		093CE6532AB8A7A000967227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 093CE6522AB8A7A000967227 /* GoogleService-Info.plist */; };
-		093CE6592ABBF2E800967227 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6582ABBF2E800967227 /* HomeViewModel.swift */; };
+		093CE65D2ABC894700967227 /* testNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE65C2ABC894700967227 /* testNavigation.swift */; };
 		095BE70A2AB7A6AF001855E3 /* CustomNavigationBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,7 @@
 		093CE64E2AB7CB2800967227 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
 		093CE6502AB89C1800967227 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		093CE6522AB8A7A000967227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		093CE6582ABBF2E800967227 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		093CE65C2ABC894700967227 /* testNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testNavigation.swift; sourceTree = "<group>"; };
 		095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				090F16E92AB7352200E0C812 /* ViewModel.swift */,
-				093CE6582ABBF2E800967227 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -147,6 +146,7 @@
 			children = (
 				090F16ED2AB737AD00E0C812 /* KeyboardCloseItem.swift */,
 				090F16EB2AB735FC00E0C812 /* NavigationManager.swift */,
+				093CE65C2ABC894700967227 /* testNavigation.swift */,
 				090F16E02AB731DA00E0C812 /* FireStoreManager.swift */,
 				095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */,
 				093CE6502AB89C1800967227 /* CustomColor.swift */,
@@ -237,8 +237,8 @@
 				090F16EE2AB737AD00E0C812 /* KeyboardCloseItem.swift in Sources */,
 				090F16E12AB731DA00E0C812 /* FireStoreManager.swift in Sources */,
 				093CE64F2AB7CB2800967227 /* AboutAppView.swift in Sources */,
-				093CE6592ABBF2E800967227 /* HomeViewModel.swift in Sources */,
 				090F16D22AB72F7500E0C812 /* HomeListView.swift in Sources */,
+				093CE65D2ABC894700967227 /* testNavigation.swift in Sources */,
 				093CE64D2AB7CAE600967227 /* MainTabScreen.swift in Sources */,
 				090F16EC2AB735FC00E0C812 /* NavigationManager.swift in Sources */,
 				095BE70A2AB7A6AF001855E3 /* CustomNavigationBarItems.swift in Sources */,
