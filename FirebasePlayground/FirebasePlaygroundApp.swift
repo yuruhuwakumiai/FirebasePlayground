@@ -21,12 +21,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct FirebasePlaygroundApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
-    @StateObject var navigationManager = NavigationManager()
+//    @StateObject var navigationManager = NavigationManager()
 
     var body: some Scene {
         WindowGroup {
-            MainTabScreen()
-                .environmentObject(navigationManager) // 一番最初の画面にenviromentObjectを認識させる
+            FishInputView()
+//                .environmentObject(navigationManager) // 一番最初の画面にenviromentObjectを認識させる
         }
     }
 }

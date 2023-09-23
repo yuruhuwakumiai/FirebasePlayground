@@ -14,7 +14,7 @@
 		090F16DF2AB731B400E0C812 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 090F16DE2AB731B400E0C812 /* FirebaseFirestore */; };
 		090F16E12AB731DA00E0C812 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F16E02AB731DA00E0C812 /* FireStoreManager.swift */; };
 		090F16E42AB731F300E0C812 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 090F16E32AB731F300E0C812 /* FirebaseFirestoreSwift */; };
-		090F16E62AB7321E00E0C812 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F16E52AB7321E00E0C812 /* Model.swift */; };
+		090F16E62AB7321E00E0C812 /* FishData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F16E52AB7321E00E0C812 /* FishData.swift */; };
 		090F16E82AB7341500E0C812 /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F16E72AB7341500E0C812 /* AddListView.swift */; };
 		090F16EA2AB7352200E0C812 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F16E92AB7352200E0C812 /* ViewModel.swift */; };
 		090F16EC2AB735FC00E0C812 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090F16EB2AB735FC00E0C812 /* NavigationManager.swift */; };
@@ -27,6 +27,10 @@
 		093CE6512AB89C1800967227 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6502AB89C1800967227 /* CustomColor.swift */; };
 		093CE6532AB8A7A000967227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 093CE6522AB8A7A000967227 /* GoogleService-Info.plist */; };
 		093CE65D2ABC894700967227 /* testNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE65C2ABC894700967227 /* testNavigation.swift */; };
+		093CE67F2ABEA31B00967227 /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE67E2ABEA31B00967227 /* HomeListModel.swift */; };
+		093CE6812ABEA69E00967227 /* AddListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6802ABEA69E00967227 /* AddListModel.swift */; };
+		093CE6832ABEE91F00967227 /* HomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6822ABEE91F00967227 /* HomeListViewModel.swift */; };
+		093CE6852ABEEDF500967227 /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6842ABEEDF500967227 /* AddListViewModel.swift */; };
 		095BE70A2AB7A6AF001855E3 /* CustomNavigationBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +41,7 @@
 		090F16D32AB72F7600E0C812 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		090F16D62AB72F7600E0C812 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		090F16E02AB731DA00E0C812 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
-		090F16E52AB7321E00E0C812 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		090F16E52AB7321E00E0C812 /* FishData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishData.swift; sourceTree = "<group>"; };
 		090F16E72AB7341500E0C812 /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
 		090F16E92AB7352200E0C812 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		090F16EB2AB735FC00E0C812 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -50,6 +54,10 @@
 		093CE6502AB89C1800967227 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		093CE6522AB8A7A000967227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		093CE65C2ABC894700967227 /* testNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testNavigation.swift; sourceTree = "<group>"; };
+		093CE67E2ABEA31B00967227 /* HomeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListModel.swift; sourceTree = "<group>"; };
+		093CE6802ABEA69E00967227 /* AddListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListModel.swift; sourceTree = "<group>"; };
+		093CE6822ABEE91F00967227 /* HomeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewModel.swift; sourceTree = "<group>"; };
+		093CE6842ABEEDF500967227 /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
 		095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +136,9 @@
 		093CE6432AB7A9A400967227 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				090F16E52AB7321E00E0C812 /* Model.swift */,
+				090F16E52AB7321E00E0C812 /* FishData.swift */,
+				093CE67E2ABEA31B00967227 /* HomeListModel.swift */,
+				093CE6802ABEA69E00967227 /* AddListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				090F16E92AB7352200E0C812 /* ViewModel.swift */,
+				093CE6822ABEE91F00967227 /* HomeListViewModel.swift */,
+				093CE6842ABEEDF500967227 /* AddListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -240,12 +252,16 @@
 				090F16D22AB72F7500E0C812 /* HomeListView.swift in Sources */,
 				093CE65D2ABC894700967227 /* testNavigation.swift in Sources */,
 				093CE64D2AB7CAE600967227 /* MainTabScreen.swift in Sources */,
+				093CE6852ABEEDF500967227 /* AddListViewModel.swift in Sources */,
 				090F16EC2AB735FC00E0C812 /* NavigationManager.swift in Sources */,
+				093CE6812ABEA69E00967227 /* AddListModel.swift in Sources */,
 				095BE70A2AB7A6AF001855E3 /* CustomNavigationBarItems.swift in Sources */,
 				090F16D02AB72F7500E0C812 /* FirebasePlaygroundApp.swift in Sources */,
 				093CE6512AB89C1800967227 /* CustomColor.swift in Sources */,
-				090F16E62AB7321E00E0C812 /* Model.swift in Sources */,
+				090F16E62AB7321E00E0C812 /* FishData.swift in Sources */,
+				093CE67F2ABEA31B00967227 /* HomeListModel.swift in Sources */,
 				090F16EA2AB7352200E0C812 /* ViewModel.swift in Sources */,
+				093CE6832ABEE91F00967227 /* HomeListViewModel.swift in Sources */,
 				093CE6472AB7AB0000967227 /* CustomMonthYearPicker.swift in Sources */,
 				093CE6492AB7ACA300967227 /* TextView.swift in Sources */,
 				090F16E82AB7341500E0C812 /* AddListView.swift in Sources */,

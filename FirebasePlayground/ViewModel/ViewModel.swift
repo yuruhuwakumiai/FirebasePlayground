@@ -64,82 +64,82 @@ class FishingLogStateViewModel: ObservableObject {
 }
 
 // MARK: - 2. データフェッチおよび更新
-class FishingLogDataViewModel: ObservableObject {
-
-    private var uiViewModel = FishingLogUIViewModel()
-    private var firebaseService = FireStoreManager()
-
-    func loadLogs() {
-        firebaseService.fetchLogs { logs, error in
-            if let error = error {
-                print("Failed to fetch logs: \(error)")
-            } else if let logs = logs {
-                self.uiViewModel.logs = logs
-                print("Fetched \(logs.count) logs.")
-            }
-        }
-    }
-
-    func addLog(_ log: FishingLog, completion: @escaping (String?) -> Void) {
-        firebaseService.saveLog(log: log) { error in
-            if let error = error {
-                print("Failed to save log: \(error)")
-                completion(nil)
-            } else {
-                self.uiViewModel.currentLogID = log.id
-                print("Current Log ID after adding new log: \(self.uiViewModel.currentLogID ?? "nil")")
-                self.loadLogs()
-                print("Saved log: \(log)")
-                completion(self.uiViewModel.currentLogID)
-            }
-        }
-    }
-
-
-    func updateLog(_ log: FishingLog, with newLog: FishingLog) {
-        do {
-            let updatedData = try newLog.asDictionary()
-            firebaseService.updateLog(logID: log.id, updatedData: updatedData) { error in
-                if let error = error {
-                    print("Failed to update log: \(error)")
-                } else {
-                    print("Log updated successfully!")
-                    // 必要に応じて、UIを更新するための処理を追加する
-                    self.loadLogs()
-                }
-            }
-        } catch {
-            print("Error converting log to dictionary: \(error)")
-        }
-    }
-
-    func saveFish(fish: Fish) {
-        guard let logID = uiViewModel.currentLogID else {
-            print("Error: saveFish(): currentLogID is nil")
-            return
-        }
-
-        // Firebaseへの保存ロジックをこちらに実装
-        firebaseService.saveFish(fish: fish, logID: logID) { error in
-            if let error = error {
-                print("Failed to save fish: \(error)")
-            } else {
-                print("Saved fish: \(fish)")
-            }
-        }
-    }
-
-    func loadFishes(for logID: String) {
-        firebaseService.fetchFishes(for: logID) { fishes, error in
-            if let error = error {
-                print("Failed to fetch fishes: \(error)")
-            } else if let fishes = fishes {
-                self.uiViewModel.fishes = fishes.filter { $0.logID == logID }
-                print("Fetched \(fishes.count) fishes.")
-            }
-        }
-    }
-}
+//class FishingLogDataViewModel: ObservableObject {
+//
+//    private var addFishingLogScreenModel = AddFishingLogScreenModel()
+//    private var firebaseService = FireStoreManager()
+//
+//    func loadLogs() {
+//        firebaseService.fetchLogs { logs, error in
+//            if let error = error {
+//                print("Failed to fetch logs: \(error)")
+//            } else if let logs = logs {
+//                self.addFishingLogScreenModel.logs = logs
+//                print("Fetched \(logs.count) logs.")
+//            }
+//        }
+//    }
+//
+//    func addLog(_ log: FishingLog, completion: @escaping (String?) -> Void) {
+//        firebaseService.saveLog(log: log) { error in
+//            if let error = error {
+//                print("Failed to save log: \(error)")
+//                completion(nil)
+//            } else {
+//                self.uiViewModel.currentLogID = log.id
+//                print("Current Log ID after adding new log: \(self.uiViewModel.currentLogID ?? "nil")")
+//                self.loadLogs()
+//                print("Saved log: \(log)")
+//                completion(self.uiViewModel.currentLogID)
+//            }
+//        }
+//    }
+//
+//
+//    func updateLog(_ log: FishingLog, with newLog: FishingLog) {
+//        do {
+//            let updatedData = try newLog.asDictionary()
+//            firebaseService.updateLog(logID: log.id, updatedData: updatedData) { error in
+//                if let error = error {
+//                    print("Failed to update log: \(error)")
+//                } else {
+//                    print("Log updated successfully!")
+//                    // 必要に応じて、UIを更新するための処理を追加する
+//                    self.loadLogs()
+//                }
+//            }
+//        } catch {
+//            print("Error converting log to dictionary: \(error)")
+//        }
+//    }
+//
+//    func saveFish(fish: Fish) {
+//        guard let logID = uiViewModel.currentLogID else {
+//            print("Error: saveFish(): currentLogID is nil")
+//            return
+//        }
+//
+//        // Firebaseへの保存ロジックをこちらに実装
+//        firebaseService.saveFish(fish: fish, logID: logID) { error in
+//            if let error = error {
+//                print("Failed to save fish: \(error)")
+//            } else {
+//                print("Saved fish: \(fish)")
+//            }
+//        }
+//    }
+//
+//    func loadFishes(for logID: String) {
+//        firebaseService.fetchFishes(for: logID) { fishes, error in
+//            if let error = error {
+//                print("Failed to fetch fishes: \(error)")
+//            } else if let fishes = fishes {
+//                self.uiViewModel.fishes = fishes.filter { $0.logID == logID }
+//                print("Fetched \(fishes.count) fishes.")
+//            }
+//        }
+//    }
+//}
 
 // MARK: - 3. ユーティリティと表示関数
 class FishingLogUtilityViewModel: ObservableObject {
@@ -211,8 +211,6 @@ class FishingLogUIViewModel: ObservableObject {
     @Published var showingUnsavedChangesAlert = false // 戻る時の保存確認
     @Published var editingLog: FishingLog? = nil // 新規か編集かを判断
 
-
-
     // MARK: FishInputView
     @Published var isPresented: Bool = false
     @Published var selectedTime = Date()
@@ -220,6 +218,7 @@ class FishingLogUIViewModel: ObservableObject {
     @Published var fishLengthString: String = ""
     @Published var fishKiloWeightString: String = ""
     @Published var fishGramWeightString: String = ""
+
     // 写真追加のため Fishsに入れ直してるから前の変数消した方がいいかも
     @Published var currentFishImage: UIImage?
     @Published var fishes: [Fish] = []
