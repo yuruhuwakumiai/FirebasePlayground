@@ -14,6 +14,6 @@ class AddListViewModel: ObservableObject {
     var fihsData: FishData {
         get { model.fishData }
         set { model.fishData = newValue }
-    }
+    }    
 }
 
