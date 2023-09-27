@@ -12,7 +12,7 @@ struct AddListView: View {
     ////    @EnvironmentObject var navigationManager: NavigationManager
     //    @Environment(\.presentationMode) var presentationMode
     //    @ObservedObject var uiViewModel: FishingLogUIViewModel
-    ////    @ObservedObject var fishingLogDataViewModel: FishingLogDataViewModel
+    @ObservedObject var viewModel = AddListViewModel()
     //
     //
     //    @State private var isShowingAlert = false

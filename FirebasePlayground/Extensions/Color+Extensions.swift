@@ -1,5 +1,5 @@
 //
-//  CustomColor.swift
+//  Color+Extensions.swift
 //  FirebasePlayground
 //
 //  Created by 橋元雄太郎 on 2023/09/18.
@@ -14,4 +14,3 @@ extension Color {
     static let point_color = Color("point_color")
     static let background_color = Color("background_color")
 }
-

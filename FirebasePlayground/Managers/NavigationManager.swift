@@ -20,13 +20,13 @@ struct NavigationDestinationModifier: ViewModifier {
     @EnvironmentObject var navigationManager: NavigationManager
 
     func body(content: Content) -> some View {
-        NavigationStack() {
+        NavigationStack(path: $navigationManager.path) {
             content
                 .navigationDestination(for: ShowView.self) { showView in // ②
                     let viewModel = navigationManager.currentViewModel
                     switch showView {
                     case .addListView:
-                        EmptyView()
+                        AddListView(viewModel: viewModel as! AddListViewModel)
                     }
                 }
         }

@@ -7,8 +7,6 @@
 
 import Foundation
 
-class AddListModel: ObservableObject {
-   var fishData = FishData()
-
+struct AddListModel {
+    var fishData = FishData()
 }
-

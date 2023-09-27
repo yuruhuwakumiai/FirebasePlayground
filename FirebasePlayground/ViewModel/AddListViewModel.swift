@@ -8,12 +8,10 @@
 import SwiftUI
 
 class AddListViewModel: ObservableObject {
-
     @Published var model = AddListModel()
 
     var fihsData: FishData {
         get { model.fishData }
         set { model.fishData = newValue }
-    }    
+    }
 }
-
