@@ -31,6 +31,7 @@
 		093CE6832ABEE91F00967227 /* HomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6822ABEE91F00967227 /* HomeListViewModel.swift */; };
 		093CE6852ABEEDF500967227 /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6842ABEEDF500967227 /* AddListViewModel.swift */; };
 		095BE70A2AB7A6AF001855E3 /* CustomNavigationBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */; };
+		A8921E602AC43A6400F87B75 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8921E5F2AC43A6400F87B75 /* View+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		093CE6822ABEE91F00967227 /* HomeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewModel.swift; sourceTree = "<group>"; };
 		093CE6842ABEEDF500967227 /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
 		095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarItems.swift; sourceTree = "<group>"; };
+		A8921E5F2AC43A6400F87B75 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +95,12 @@
 			isa = PBXGroup;
 			children = (
 				093CE6452AB7A9BB00967227 /* Helper */,
+				093CE6422AB7A99900967227 /* View */,
 				093CE6442AB7A9A900967227 /* ViewModel */,
 				093CE6432AB7A9A400967227 /* Model */,
-				093CE6422AB7A99900967227 /* View */,
 				090F16CF2AB72F7500E0C812 /* FirebasePlaygroundApp.swift */,
+				A8921E5E2AC43A5400F87B75 /* Extensions */,
+				A8921E612AC43AE300F87B75 /* Managers */,
 				090F16D32AB72F7600E0C812 /* Assets.xcassets */,
 				093CE6522AB8A7A000967227 /* GoogleService-Info.plist */,
 				090F16D52AB72F7600E0C812 /* Preview Content */,
@@ -155,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				090F16ED2AB737AD00E0C812 /* KeyboardCloseItem.swift */,
-				090F16EB2AB735FC00E0C812 /* NavigationManager.swift */,
 				090F16E02AB731DA00E0C812 /* FireStoreManager.swift */,
 				095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */,
 				093CE6502AB89C1800967227 /* CustomColor.swift */,
@@ -163,6 +166,22 @@
 				093CE6482AB7ACA300967227 /* TextView.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		A8921E5E2AC43A5400F87B75 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A8921E5F2AC43A6400F87B75 /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A8921E612AC43AE300F87B75 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				090F16EB2AB735FC00E0C812 /* NavigationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +280,7 @@
 				093CE6472AB7AB0000967227 /* CustomMonthYearPicker.swift in Sources */,
 				093CE6492AB7ACA300967227 /* TextView.swift in Sources */,
 				090F16E82AB7341500E0C812 /* AddListView.swift in Sources */,
+				A8921E602AC43A6400F87B75 /* View+Extensions.swift in Sources */,
 				093CE64B2AB7B5BE00967227 /* FishInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

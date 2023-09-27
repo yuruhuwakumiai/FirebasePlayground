@@ -13,7 +13,7 @@ struct HomeListView: View {
     @ObservedObject var viewModel = HomeListViewModel()
 
 //    @State private var selectedDate: Date = Date()
-//    @EnvironmentObject var navigationManager: NavigationManager
+    @EnvironmentObject var navigationManager: NavigationManager
 
 //    let dateTimeFormatter: DateFormatter = {
 //        let formatter = DateFormatter()
@@ -23,24 +23,19 @@ struct HomeListView: View {
 //    }()
 
     var body: some View {
-        NavigationStack() {
-            ZStack {
-                Color.background_color
-                    .ignoresSafeArea()
-                VStack(spacing: 20) {
-                    homeSearchView()
-                    diaryListView()
-                    Button {
-
-                    } label: {
-                        Image(systemName: "plus.circle.fill") // 「追加」のアイコン
-                            .imageScale(.large) // アイコンのサイズを調整
-                    }
-                }
-                .navigationBarTitle("記録", displayMode: .inline)
-
+        VStack(spacing: 20) {
+            homeSearchView()
+            diaryListView()
+            Button {
+                
+            } label: {
+                Image(systemName: "plus.circle.fill") // 「追加」のアイコン
+                    .imageScale(.large) // アイコンのサイズを調整
             }
         }
+        .navigationBarTitle("記録", displayMode: .inline)
+        .backgroundView(.background_color)
+        .modifier(NavigationDestinationModifier())
     }
 
     @ViewBuilder
