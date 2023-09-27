@@ -9,50 +9,46 @@ import SwiftUI
 import UIKit
 
 struct HomeListView: View {
-
     @ObservedObject var viewModel = HomeListViewModel()
-
-//    @State private var selectedDate: Date = Date()
     @EnvironmentObject var navigationManager: NavigationManager
-
-//    let dateTimeFormatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .short
-//        formatter.timeStyle = .short
-//        return formatter
-//    }()
 
     var body: some View {
         VStack(spacing: 20) {
             homeSearchView()
             diaryListView()
-            Button {
-                
-            } label: {
-                Image(systemName: "plus.circle.fill") // 「追加」のアイコン
-                    .imageScale(.large) // アイコンのサイズを調整
-            }
+            toAddListViewButtonView()
         }
-        .navigationBarTitle("記録", displayMode: .inline)
+        .navigationSetting("記録")
         .backgroundView(.background_color)
         .modifier(NavigationDestinationModifier())
+        .sheet(isPresented: $viewModel.isShowAddListView) {
+            AddListView()
+        }
+    }
+    
+    @ViewBuilder
+    private func toAddListViewButtonView() -> some View {
+        Button(action: viewModel.showAddListView) {
+            Image(systemName: "plus.circle.fill")
+                .imageScale(.large)
+        }
     }
 
     @ViewBuilder
     private func homeSearchView() -> some View {
-//        Picker("検索項目", selection: $homeListViewModel.selectedSearchCriteria) {
-//            ForEach(SearchCriteria.allCases, id: \.self) { criteria in
-//                Text(criteria.rawValue).tag(criteria)
-//            }
-//        }
-//        .pickerStyle(SegmentedPickerStyle())
-//        .padding(.horizontal)
-//        .padding(.top, 30)
+        Picker("検索項目", selection: $viewModel.searchCriteria) {
+            ForEach(SearchCriteria.allCases, id: \.self) { criteria in
+                Text(criteria.rawValue).tag(criteria)
+            }
+        }
+        .pickerStyle(.segmented)
+        .padding(.horizontal)
+        .padding(.top, 30)
 //
-//        if homeListViewModel.selectedSearchCriteria == .date {
-//            CustomMonthYearPicker(selectedYear: $homeListViewModel.selectedYear, selectedMonth: $homeListViewModel.selectedMonth)
+//        if viewModel.selectedSearchCriteria == .date {
+//            CustomMonthYearPicker(selectedYear: $viewModel.selectedYear, selectedMonth: $viewModel.selectedMonth)
 //        } else {
-//            TextField("検索...", text: $homeListViewModel.searchText)
+//            TextField("検索...", text: $viewModel.searchText)
 //                .padding(10)
 //                .background(Color(.systemGray6))
 //                .cornerRadius(8)

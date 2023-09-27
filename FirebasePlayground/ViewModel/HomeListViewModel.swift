@@ -14,4 +14,18 @@ class HomeListViewModel: ObservableObject {
         get { model.fishPosts }
         set { model.fishPosts = newValue }
     }
+    
+    var isShowAddListView: Bool {
+        get { model.isShowAddListView }
+        set { model.isShowAddListView = newValue }
+    }
+
+    var searchCriteria: SearchCriteria {
+        get { model.searchCriteria }
+        set { model.searchCriteria = newValue }
+    }
+    
+    func showAddListView() {
+        model.showAddListView()
+    }
 }

@@ -31,13 +31,6 @@ enum FishType: String, CaseIterable, Codable {
     case tuna = "マグロ"
 }
 
-enum SearchCriteria: String, CaseIterable {
-    case date = "日付"
-    case fish = "魚種"
-    case tackle = "仕掛け"
-}
-
-
 enum ImagePickerAction: Codable {
     case library, camera, delete, cancel
 }

@@ -6,23 +6,24 @@
 //
 
 import SwiftUI
-import Foundation
 
-//struct AddListView: View {
-//
-////    @EnvironmentObject var navigationManager: NavigationManager
-//    @Environment(\.presentationMode) var presentationMode
-//    @ObservedObject var uiViewModel: FishingLogUIViewModel
-////    @ObservedObject var fishingLogDataViewModel: FishingLogDataViewModel
-//
-//
-//    @State private var isShowingAlert = false
-//
-//    let fishLengths = Array(0...200)
-//    let fishWeights = Array(0...100)
-//
-//    var body: some View {
-//
+struct AddListView: View {
+    //
+    ////    @EnvironmentObject var navigationManager: NavigationManager
+    //    @Environment(\.presentationMode) var presentationMode
+    //    @ObservedObject var uiViewModel: FishingLogUIViewModel
+    ////    @ObservedObject var fishingLogDataViewModel: FishingLogDataViewModel
+    //
+    //
+    //    @State private var isShowingAlert = false
+    //
+    //    let fishLengths = Array(0...200)
+    //    let fishWeights = Array(0...100)
+    //
+    var body: some View {
+        Text("追加画面")
+    }
+}
 //        VStack {
 //            Form {
 //                titleDateSection()

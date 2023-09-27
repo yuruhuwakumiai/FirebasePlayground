@@ -15,4 +15,12 @@ extension View {
             .edgesIgnoringSafeArea(.all)
             .overlay { self }
     }
+    
+    /// ナビゲーション設定
+    @ViewBuilder
+    func navigationSetting(_ title: String) -> some View {
+        self
+            .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.inline)
+    }
 }
