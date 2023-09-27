@@ -51,18 +51,6 @@ struct Fish: Codable, Identifiable {
     var weightGram: Int = 0
     var imageData: Data?
     var logID: String
-
-    //    var image: UIImage? {
-    //        get {
-    //            if let data = imageData {
-    //                return UIImage(data: data)
-    //            }
-    //            return nil
-    //        }
-    //        set {
-    //            imageData = newValue?.pngData()
-    //        }
-    //    }
 }
 
 struct FishingLog: Codable, Identifiable {
@@ -109,6 +97,11 @@ struct FishingLog: Codable, Identifiable {
         }
     }
 }
+// TODO: 別ファルに分ける
+struct FishPost {
+    var title = ""
+}
+
 // MARK: ひとまず全部このストラクトにいれた
 struct FishData {
 
@@ -127,7 +120,6 @@ struct FishData {
     var length: String = ""
     var location = ""
     var fishNote = ""
-    //    var image: UIImage?
     var cost: String = ""
     var selectedWeather = WeatherTypes.sunny
     var selectedTide = TideTypes.highTide
@@ -145,7 +137,6 @@ struct FishData {
     var needsRefresh: Bool = false
     var selectedYear: Int = Calendar.current.component(.year, from: Date())
     var selectedMonth: Int = Calendar.current.component(.month, from: Date())
-    //    var images: [String: UIImage] = [:]  // キーはFishingLogのID、値は画像
     var showingSaveFirstAlert: Bool = false
     var showingUnsavedChangesAlert = false // 戻る時の保存確認
     var editingLog: FishingLog? = nil // 新規か編集かを判断
@@ -157,13 +148,6 @@ struct FishData {
     var fishLengthString: String = ""
     var fishKiloWeightString: String = ""
     var fishGramWeightString: String = ""
-
-    // 写真追加のため Fishsに入れ直してるから前の変数消した方がいいかも
-    //    @Published var currentFishImage: UIImage?
-    //    @Published var fishes: [Fish] = []
-    //    @Published var showingFishImagePicker = false
-    //    @Published var currentLog: FishingLog?
-    //    @Published var currentLogID: String?
 
     // MARK: TacleInputView
     //    @Published var selectedTackleTypeIndex: Int = 0

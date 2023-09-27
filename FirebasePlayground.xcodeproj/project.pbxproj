@@ -26,7 +26,6 @@
 		093CE64F2AB7CB2800967227 /* AboutAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE64E2AB7CB2800967227 /* AboutAppView.swift */; };
 		093CE6512AB89C1800967227 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6502AB89C1800967227 /* CustomColor.swift */; };
 		093CE6532AB8A7A000967227 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 093CE6522AB8A7A000967227 /* GoogleService-Info.plist */; };
-		093CE65D2ABC894700967227 /* testNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE65C2ABC894700967227 /* testNavigation.swift */; };
 		093CE67F2ABEA31B00967227 /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE67E2ABEA31B00967227 /* HomeListModel.swift */; };
 		093CE6812ABEA69E00967227 /* AddListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6802ABEA69E00967227 /* AddListModel.swift */; };
 		093CE6832ABEE91F00967227 /* HomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6822ABEE91F00967227 /* HomeListViewModel.swift */; };
@@ -53,7 +52,6 @@
 		093CE64E2AB7CB2800967227 /* AboutAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppView.swift; sourceTree = "<group>"; };
 		093CE6502AB89C1800967227 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		093CE6522AB8A7A000967227 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		093CE65C2ABC894700967227 /* testNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testNavigation.swift; sourceTree = "<group>"; };
 		093CE67E2ABEA31B00967227 /* HomeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListModel.swift; sourceTree = "<group>"; };
 		093CE6802ABEA69E00967227 /* AddListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListModel.swift; sourceTree = "<group>"; };
 		093CE6822ABEE91F00967227 /* HomeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewModel.swift; sourceTree = "<group>"; };
@@ -125,10 +123,10 @@
 			isa = PBXGroup;
 			children = (
 				090F16D12AB72F7500E0C812 /* HomeListView.swift */,
-				093CE64E2AB7CB2800967227 /* AboutAppView.swift */,
-				093CE64C2AB7CAE600967227 /* MainTabScreen.swift */,
 				090F16E72AB7341500E0C812 /* AddListView.swift */,
 				093CE64A2AB7B5BE00967227 /* FishInputView.swift */,
+				093CE64E2AB7CB2800967227 /* AboutAppView.swift */,
+				093CE64C2AB7CAE600967227 /* MainTabScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,7 +156,6 @@
 			children = (
 				090F16ED2AB737AD00E0C812 /* KeyboardCloseItem.swift */,
 				090F16EB2AB735FC00E0C812 /* NavigationManager.swift */,
-				093CE65C2ABC894700967227 /* testNavigation.swift */,
 				090F16E02AB731DA00E0C812 /* FireStoreManager.swift */,
 				095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */,
 				093CE6502AB89C1800967227 /* CustomColor.swift */,
@@ -250,7 +247,6 @@
 				090F16E12AB731DA00E0C812 /* FireStoreManager.swift in Sources */,
 				093CE64F2AB7CB2800967227 /* AboutAppView.swift in Sources */,
 				090F16D22AB72F7500E0C812 /* HomeListView.swift in Sources */,
-				093CE65D2ABC894700967227 /* testNavigation.swift in Sources */,
 				093CE64D2AB7CAE600967227 /* MainTabScreen.swift in Sources */,
 				093CE6852ABEEDF500967227 /* AddListViewModel.swift in Sources */,
 				090F16EC2AB735FC00E0C812 /* NavigationManager.swift in Sources */,

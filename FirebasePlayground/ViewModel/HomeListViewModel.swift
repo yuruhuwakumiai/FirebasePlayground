@@ -10,16 +10,8 @@ import SwiftUI
 class HomeListViewModel: ObservableObject {
     @Published var model = HomeListModel()
 
-    var fishDatabase: FishData {
-        get { model.fishData }
-        set { model.fishData = newValue }
+    var fishPosts: [FishPost] {
+        get { model.fishPosts }
+        set { model.fishPosts = newValue }
     }
-
-    func prepareForNewLog() {
-        model.prepareForNewLog()
-    }
-
-//    func prepareForEditing(log: FishingLog) {
-//        model.prepareForEditing(log: FishingLog)
-//    }
 }
