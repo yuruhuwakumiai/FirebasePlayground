@@ -12,7 +12,40 @@ struct HomeListModel {
     var isShowAddListView = false
 
     var searchCriteria = SearchCriteria.date
-    
+
+    var selectedSearchCriteria = SearchCriteria.date
+
+    var selectedYear = Calendar.current.component(.year, from: Date())
+
+    var selectedMonth = Calendar.current.component(.month, from: Date())
+
+    var searchText = ""
+
+    //    var filteredLogs: [String: [FishingLog]] {
+    //        var currentFilteredLogs = logsByYearAndMonth
+    //
+    //        switch uiViewModel.selectedSearchCriteria {
+    //        case .fish:
+    //            currentFilteredLogs = currentFilteredLogs.mapValues { logs in
+    //                logs.filter { log in
+    //                    return log.fishNote?.contains(uiViewModel.searchText) ?? false
+    //                }
+    //            }.filter { $0.value.count > 0 }
+    //        case .tackle:
+    //            currentFilteredLogs = currentFilteredLogs.mapValues { logs in
+    //                logs.filter { log in
+    //                    return log.tackleNote?.contains(uiViewModel.searchText) ?? false
+    //                }
+    //            }.filter { $0.value.count > 0 }
+    //        case .date:
+    //            let key = "\(uiViewModel.selectedYear)-\(uiViewModel.selectedMonth)"
+    //            currentFilteredLogs = currentFilteredLogs.filter { $0.key == key }
+    //        }
+    //
+    //        return currentFilteredLogs
+    //    }
+
+
     mutating func showAddListView() {
         isShowAddListView = true
     }

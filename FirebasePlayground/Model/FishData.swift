@@ -90,7 +90,7 @@ struct FishingLog: Codable, Identifiable {
         }
     }
 }
-// TODO: 別ファルに分ける
+// TODO: 別ファルに分ける Home画面で表示するもの
 struct FishPost {
     var title = ""
 }
@@ -125,11 +125,8 @@ struct FishData {
     var tackleInput: String = ""
     var showingDeleteAlert = false
     var logs: [FishingLog] = []
-    var searchText = ""
-    var selectedSearchCriteria = SearchCriteria.date
+
     var needsRefresh: Bool = false
-    var selectedYear: Int = Calendar.current.component(.year, from: Date())
-    var selectedMonth: Int = Calendar.current.component(.month, from: Date())
     var showingSaveFirstAlert: Bool = false
     var showingUnsavedChangesAlert = false // 戻る時の保存確認
     var editingLog: FishingLog? = nil // 新規か編集かを判断

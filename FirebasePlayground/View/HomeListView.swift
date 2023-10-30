@@ -44,44 +44,43 @@ struct HomeListView: View {
         .pickerStyle(.segmented)
         .padding(.horizontal)
         .padding(.top, 30)
-//
-//        if viewModel.selectedSearchCriteria == .date {
-//            CustomMonthYearPicker(selectedYear: $viewModel.selectedYear, selectedMonth: $viewModel.selectedMonth)
-//        } else {
-//            TextField("検索...", text: $viewModel.searchText)
-//                .padding(10)
-//                .background(Color(.systemGray6))
-//                .cornerRadius(8)
-//                .padding(.horizontal)
-//        }
-    }
 
+        if viewModel.selectedSearchCriteria == .date {
+            CustomMonthYearPicker(selectedYear: $viewModel.selectedYear, selectedMonth: $viewModel.selectedMonth)
+        } else {
+            TextField("検索...", text: $viewModel.searchText)
+                .padding(10)
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+                .padding(.horizontal)
+        }
+    }
 
     @ViewBuilder
     private func diaryListView() -> some View {
-//        List {
-//            ForEach(Array(logFilterViewModel.filteredLogs.keys), id: \.self) { key in
-//                Section(header: Text(readableYearAndMonth(from: key))) {
-//                    ForEach(logFilterViewModel.filteredLogs[key]!, id: \.id) { log in
-//                        Button {
-//                            logStateViewModel.prepareForEditing(log: log)
-//
-//                        } label: {
-//                            HStack(spacing: 50) {
-//                                logImage(for: log)
-//                                logText(for: log)
-//                            }
-//                        }
-//                        .foregroundColor(Color.white)
-//                        .padding(5)
-//                        .onAppear {
-//
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        .id(UUID())
+        List {
+            ForEach(Array(logFilterViewModel.filteredLogs.keys), id: \.self) { key in
+                Section(header: Text(readableYearAndMonth(from: key))) {
+                    ForEach(logFilterViewModel.filteredLogs[key]!, id: \.id) { log in
+                        Button {
+                            logStateViewModel.prepareForEditing(log: log)
+
+                        } label: {
+                            HStack(spacing: 50) {
+                                logImage(for: log)
+                                logText(for: log)
+                            }
+                        }
+                        .foregroundColor(Color.white)
+                        .padding(5)
+                        .onAppear {
+
+                        }
+                    }
+                }
+            }
+        }
+        .id(UUID())
     }
 
     @ViewBuilder

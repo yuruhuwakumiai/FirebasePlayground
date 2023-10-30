@@ -24,8 +24,43 @@ class HomeListViewModel: ObservableObject {
         get { model.searchCriteria }
         set { model.searchCriteria = newValue }
     }
-    
+
+    var selectedSearchCriteria: SearchCriteria {
+        get {
+            model.selectedSearchCriteria }
+        set {
+            model.selectedSearchCriteria = newValue }
+        }
+
+    var selectedYear: Int {
+        get {
+            model.selectedYear
+        }
+        set {
+            model.selectedYear = newValue
+        }
+    }
+
+    var selectedMonth: Int {
+        get {
+            model.selectedMonth
+        }
+        set {
+            model.selectedMonth = newValue
+        }
+    }
+
+    var searchText: String {
+        get {
+            model.searchText
+        }
+        set {
+            model.searchText = newValue
+        }
+    }
+
     func showAddListView() {
         model.showAddListView()
     }
 }
+
