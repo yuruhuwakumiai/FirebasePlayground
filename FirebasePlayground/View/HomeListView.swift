@@ -3,13 +3,13 @@
 //  FirebasePlayground
 //
 //  Created by 橋元雄太郎 on 2023/09/17.
-//
+//  レイアウトを作る役割
 
 import SwiftUI
 import UIKit
 
 struct HomeListView: View {
-    @ObservedObject var viewModel = HomeListViewModel()
+    @StateObject var viewModel = HomeListViewModel()
     @EnvironmentObject var navigationManager: NavigationManager
 
     var body: some View {
@@ -36,8 +36,8 @@ struct HomeListView: View {
 
     @ViewBuilder
     private func homeSearchView() -> some View {
-        Picker("検索項目", selection: $viewModel.searchCriteria) {
-            ForEach(SearchCriteria.allCases, id: \.self) { criteria in
+        Picker("検索項目", selection: $viewModel.selectedPicker) {
+            ForEach(SelectedPicker.allCases, id: \.self) { criteria in
                 Text(criteria.rawValue).tag(criteria)
             }
         }
@@ -45,7 +45,7 @@ struct HomeListView: View {
         .padding(.horizontal)
         .padding(.top, 30)
 
-        if viewModel.selectedSearchCriteria == .date {
+        if viewModel.selectedPicker == .date {
             CustomMonthYearPicker(selectedYear: $viewModel.selectedYear, selectedMonth: $viewModel.selectedMonth)
         } else {
             TextField("検索...", text: $viewModel.searchText)
@@ -59,25 +59,26 @@ struct HomeListView: View {
     @ViewBuilder
     private func diaryListView() -> some View {
         List {
-            ForEach(Array(logFilterViewModel.filteredLogs.keys), id: \.self) { key in
-                Section(header: Text(readableYearAndMonth(from: key))) {
-                    ForEach(logFilterViewModel.filteredLogs[key]!, id: \.id) { log in
-                        Button {
-                            logStateViewModel.prepareForEditing(log: log)
-
-                        } label: {
-                            HStack(spacing: 50) {
-                                logImage(for: log)
-                                logText(for: log)
-                            }
-                        }
-                        .foregroundColor(Color.white)
-                        .padding(5)
-                        .onAppear {
-
-                        }
-                    }
-                }
+            ForEach(viewModel.dataList, id: \.self) { data in
+                Text(data)
+//                Section(header: Text(readableYearAndMonth(from: key))) {
+//                    ForEach(viewModel.filteredLogs[key]!, id: \.id) { log in
+//                        Button {
+//                            viewModel.prepareForEditing(log: log)
+//
+//                        } label: {
+//                            HStack(spacing: 50) {
+//                                logImage(for: log)
+//                                logText(for: log)
+//                            }
+//                        }
+//                        .foregroundColor(Color.white)
+//                        .padding(5)
+//                        .onAppear {
+//
+//                        }
+//                    }
+//                }
             }
         }
         .id(UUID())

@@ -31,6 +31,7 @@
 		093CE6832ABEE91F00967227 /* HomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6822ABEE91F00967227 /* HomeListViewModel.swift */; };
 		093CE6852ABEEDF500967227 /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093CE6842ABEEDF500967227 /* AddListViewModel.swift */; };
 		095BE70A2AB7A6AF001855E3 /* CustomNavigationBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */; };
+		A86ECE492AEFD9D8000A3D0A /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86ECE482AEFD9D8000A3D0A /* FirebaseRepository.swift */; };
 		A8921E602AC43A6400F87B75 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8921E5F2AC43A6400F87B75 /* View+Extensions.swift */; };
 		A8921E642AC4445600F87B75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8921E632AC4445600F87B75 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		093CE6822ABEE91F00967227 /* HomeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewModel.swift; sourceTree = "<group>"; };
 		093CE6842ABEEDF500967227 /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
 		095BE7092AB7A6AF001855E3 /* CustomNavigationBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarItems.swift; sourceTree = "<group>"; };
+		A86ECE482AEFD9D8000A3D0A /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
 		A8921E5F2AC43A6400F87B75 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		A8921E632AC4445600F87B75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +103,7 @@
 				093CE6422AB7A99900967227 /* View */,
 				093CE6442AB7A9A900967227 /* ViewModel */,
 				093CE6432AB7A9A400967227 /* Model */,
+				A86ECE472AEFD9BF000A3D0A /* Repository */,
 				A8921E5E2AC43A5400F87B75 /* Extensions */,
 				A8921E612AC43AE300F87B75 /* Managers */,
 				090F16D32AB72F7600E0C812 /* Assets.xcassets */,
@@ -167,6 +170,14 @@
 				093CE6482AB7ACA300967227 /* TextView.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		A86ECE472AEFD9BF000A3D0A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A86ECE482AEFD9D8000A3D0A /* FirebaseRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		A8921E5E2AC43A5400F87B75 /* Extensions */ = {
@@ -273,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A86ECE492AEFD9D8000A3D0A /* FirebaseRepository.swift in Sources */,
 				090F16EE2AB737AD00E0C812 /* KeyboardCloseItem.swift in Sources */,
 				090F16E12AB731DA00E0C812 /* FireStoreManager.swift in Sources */,
 				093CE64F2AB7CB2800967227 /* AboutAppView.swift in Sources */,
@@ -422,7 +434,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FirebasePlayground/Preview Content\"";
-				DEVELOPMENT_TEAM = J8NG2572RV;
+				DEVELOPMENT_TEAM = Y345KMQSX2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -452,7 +464,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FirebasePlayground/Preview Content\"";
-				DEVELOPMENT_TEAM = J8NG2572RV;
+				DEVELOPMENT_TEAM = Y345KMQSX2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

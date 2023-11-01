@@ -3,7 +3,7 @@
 //  FirebasePlayground
 //
 //  Created by 橋元雄太郎 on 2023/09/23.
-//
+//  データをViewに渡す役割
 
 import SwiftUI
 
@@ -20,17 +20,12 @@ class HomeListViewModel: ObservableObject {
         set { model.isShowAddListView = newValue }
     }
 
-    var searchCriteria: SearchCriteria {
-        get { model.searchCriteria }
-        set { model.searchCriteria = newValue }
+    var selectedPicker: SelectedPicker {
+        get { model.selectedPicker }
+        set { model.selectedPicker = newValue }
     }
-
-    var selectedSearchCriteria: SearchCriteria {
-        get {
-            model.selectedSearchCriteria }
-        set {
-            model.selectedSearchCriteria = newValue }
-        }
+    
+    var dataList: [String] { model.dataList }
 
     var selectedYear: Int {
         get {
