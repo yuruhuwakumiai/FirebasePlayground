@@ -10,6 +10,10 @@ import SwiftUI
 class HomeListViewModel: ObservableObject {
     @Published var model = HomeListModel()
 
+    var logs: [FishingLog] {
+        model.logs
+    }
+
     var fishPosts: [FishPost] {
         get { model.fishPosts }
         set { model.fishPosts = newValue }
@@ -24,8 +28,12 @@ class HomeListViewModel: ObservableObject {
         get { model.selectedPicker }
         set { model.selectedPicker = newValue }
     }
+
+    var filteredLogs: [String: [FishingLog]] {
+        model.filterLogs()
+    }
     
-    var dataList: [String] { model.dataList }
+//    var dataList: [String] { model.dataList }
 
     var selectedYear: Int {
         get {

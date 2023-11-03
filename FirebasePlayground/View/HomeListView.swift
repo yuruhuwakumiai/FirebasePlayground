@@ -59,26 +59,26 @@ struct HomeListView: View {
     @ViewBuilder
     private func diaryListView() -> some View {
         List {
-            ForEach(viewModel.dataList, id: \.self) { data in
-                Text(data)
-//                Section(header: Text(readableYearAndMonth(from: key))) {
-//                    ForEach(viewModel.filteredLogs[key]!, id: \.id) { log in
-//                        Button {
-//                            viewModel.prepareForEditing(log: log)
-//
-//                        } label: {
-//                            HStack(spacing: 50) {
-//                                logImage(for: log)
-//                                logText(for: log)
-//                            }
-//                        }
-//                        .foregroundColor(Color.white)
-//                        .padding(5)
-//                        .onAppear {
-//
-//                        }
-//                    }
-//                }
+            ForEach(Array(viewModel.filteredLogs.keys), id: \.self) { key in
+                Section(header: Text(readableYearAndMonth(from: key))) {
+                    ForEach(viewModel.filteredLogs[key]!, id: \.id) { log in
+                        Button {
+// TODO: ボタンアクション
+// logStateViewModel.prepareForEditing(log: log)
+
+                        } label: {
+                            HStack(spacing: 50) {
+                                logImage(for: log)
+                                logText(for: log)
+                            }
+                        }
+                        .foregroundColor(Color.white)
+                        .padding(5)
+                        .onAppear {
+
+                        }
+                    }
+                }
             }
         }
         .id(UUID())
@@ -86,18 +86,18 @@ struct HomeListView: View {
 
     @ViewBuilder
     private func logText(for log: FishingLog) -> some View {
-//        VStack(alignment: .leading) {
-//            HStack {
-//                Text(logUtilityViewModel.dateString(from: log.date))
-//                    .foregroundColor(Color.sub_color)
-//                    .bold()
-//                Text(log.title)
-//            }
-//            Text("\(logUtilityViewModel.timeRangeString(from: log.startDate, to: log.endDate))")  // 開始時間と終了時間
-//            if let location = log.location, !location.isEmpty {
-//                Text(location)  // 場所
-//            }
-//        }
+        VStack(alignment: .leading) {
+            HStack {
+                Text(logUtilityViewModel.dateString(from: log.date))
+                    .foregroundColor(Color.sub_color)
+                    .bold()
+                Text(log.title)
+            }
+            Text("\(logUtilityViewModel.timeRangeString(from: log.startDate, to: log.endDate))")  // 開始時間と終了時間
+            if let location = log.location, !location.isEmpty {
+                Text(location)  // 場所
+            }
+        }
     }
 
 

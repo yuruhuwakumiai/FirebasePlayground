@@ -8,6 +8,7 @@
 import Foundation
 
 struct HomeListModel {
+    var logs: [FishingLog] = [] // 元となるログのデータ
     let firebaseRepository = FirebaseRepository()
     var fishPosts: [FishPost] = []
     var isShowAddListView = false
@@ -19,8 +20,46 @@ struct HomeListModel {
     var selectedMonth = Calendar.current.component(.month, from: Date())
 
     var searchText = ""
+
+    // 年度と月ごとのlogを返す
+    var logsByYearAndMonth: [String: [FishingLog]] {
+        Dictionary(grouping: logs) { log in
+            let components = Calendar.current.dateComponents([.year, .month], from: log.date)
+            if let year = components.year, let month = components.month {
+                return "\(year)-\(month)"
+            } else {
+                return "Unknown"
+            }
+        }
+    }
+
+    // フィルタリングを適用したログを返す
+    func filterLogs() -> [String: [FishingLog]] {
+        var currentFilteredLogs = logsByYearAndMonth
+
+        switch selectedPicker {
+        case .fish:
+            currentFilteredLogs = currentFilteredLogs.mapValues { logs in
+                logs.filter { log in
+                    return log.fishNote?.contains(searchText) ?? false
+                }
+            }.filter { $0.value.count > 0 }
+        case .tackle:
+            currentFilteredLogs = currentFilteredLogs.mapValues { logs in
+                logs.filter { log in
+                    return log.tackleNote?.contains(searchText) ?? false
+                }
+            }.filter { $0.value.count > 0 }
+        case .date:
+            let key = "\(selectedYear)-\(selectedMonth)"
+            currentFilteredLogs = currentFilteredLogs.filter { $0.key == key }
+        }
+
+        return currentFilteredLogs
+    }
+
     
-    var dataList = firebaseRepository.getData()
+//    var dataList = firebaseRepository.getData()
 
     //    var filteredLogs: [String: [FishingLog]] {
     //        var currentFilteredLogs = logsByYearAndMonth
