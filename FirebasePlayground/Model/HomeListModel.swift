@@ -58,6 +58,23 @@ struct HomeListModel {
         return currentFilteredLogs
     }
 
+    // 時間帯を文字列に変換
+    func timeRangeString(from start: Date, to end: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let startTime = formatter.string(from: start)
+        let endTime = formatter.string(from: end)
+
+        return "\(startTime)時〜\(endTime)時"
+    }
+
+    // 日付を文字列に変換
+    func dateString(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M月d日"
+
+        return dateFormatter.string(from: date)
+    }
     
 //    var dataList = firebaseRepository.getData()
 

@@ -18,7 +18,7 @@ class HomeListViewModel: ObservableObject {
         get { model.fishPosts }
         set { model.fishPosts = newValue }
     }
-    
+
     var isShowAddListView: Bool {
         get { model.isShowAddListView }
         set { model.isShowAddListView = newValue }
@@ -60,6 +60,14 @@ class HomeListViewModel: ObservableObject {
         set {
             model.searchText = newValue
         }
+    }
+
+    func timeRangeString(from start: Date, to end: Date) -> String {
+        return model.timeRangeString(from: start, to: end)
+    }
+
+    func dateString(from date: Date) -> String {
+        return model.dateString(from: date)
     }
 
     func showAddListView() {

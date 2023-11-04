@@ -88,12 +88,12 @@ struct HomeListView: View {
     private func logText(for log: FishingLog) -> some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(logUtilityViewModel.dateString(from: log.date))
+                Text(viewModel.dateString(from: log.date))
                     .foregroundColor(Color.sub_color)
                     .bold()
                 Text(log.title)
             }
-            Text("\(logUtilityViewModel.timeRangeString(from: log.startDate, to: log.endDate))")  // 開始時間と終了時間
+            Text("\(viewModel.timeRangeString(from: log.startDate, to: log.endDate))")  // 開始時間と終了時間
             if let location = log.location, !location.isEmpty {
                 Text(location)  // 場所
             }
