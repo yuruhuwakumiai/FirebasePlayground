@@ -62,6 +62,12 @@ class HomeListViewModel: ObservableObject {
         }
     }
 
+    var images: [String: UIImage] {
+        get { model.images }
+        set { model.images = newValue }
+    }
+
+
     func timeRangeString(from start: Date, to end: Date) -> String {
         return model.timeRangeString(from: start, to: end)
     }

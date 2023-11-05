@@ -6,6 +6,7 @@
 //  処理する役割
 
 import Foundation
+import UIKit
 
 struct HomeListModel {
     var logs: [FishingLog] = [] // 元となるログのデータ
@@ -32,6 +33,8 @@ struct HomeListModel {
             }
         }
     }
+
+    var images: [String: UIImage] = [:]
 
     // フィルタリングを適用したログを返す
     func filterLogs() -> [String: [FishingLog]] {

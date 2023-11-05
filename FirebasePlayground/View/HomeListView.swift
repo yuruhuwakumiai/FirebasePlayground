@@ -102,18 +102,18 @@ struct HomeListView: View {
 
 
     @ViewBuilder
-    private func logImage(for log: FishingLog) -> some View { // LogTypeは適切な型に置き換えてください。
-//        if let img = homeListViewModel.images[log.id] {
-//            Image(uiImage: img)
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: 50, height: 50)
-//        } else {
-//            Image(systemName: "photo")
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: 50, height: 50)
-//        }
+    private func logImage(for log: FishingLog) -> some View {
+                if let img = viewModel.images[log.id] {
+                    Image(uiImage: img)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                }
     }
 
 
